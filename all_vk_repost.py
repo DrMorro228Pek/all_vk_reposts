@@ -1,3 +1,4 @@
+# coding: utf8
 import vk_api
 import data
 import json
@@ -6,84 +7,84 @@ import random
 import time
 import os
 
-# Группы которы чекаем
+# ГѓГ°ГіГЇГЇГ» ГЄГ®ГІГ®Г°Г» Г·ГҐГЄГ ГҐГ¬
 vk_groups = ["-97758272", "-109933725", "-126239339", "-105737219", "-125914421"]
 
-# Кол-во записей которые проверяются, начиная сверху
+# ГЉГ®Г«-ГўГ® Г§Г ГЇГЁГ±ГҐГ© ГЄГ®ГІГ®Г°Г»ГҐ ГЇГ°Г®ГўГҐГ°ГїГѕГІГ±Гї, Г­Г Г·ГЁГ­Г Гї Г±ГўГҐГ°ГµГі
 count = 10
 
-# Авторизация
+# ГЂГўГІГ®Г°ГЁГ§Г Г¶ГЁГї
 vk_session = vk_api.VkApi(os.environ.get("LOGIN"), os.environ.get("PASS"))
 vk_session.auth()
 
-# Перебираем группы
+# ГЏГҐГ°ГҐГЎГЁГ°Г ГҐГ¬ ГЈГ°ГіГЇГЇГ»
 while True:
     for i in range(len(vk_groups)):
     
         result = vk_session.method("wall.get",{"owner_id" : vk_groups[i], "count" : count, "filter" : "owner"})
 
-        # Перебираем записи
+        # ГЏГҐГ°ГҐГЎГЁГ°Г ГҐГ¬ Г§Г ГЇГЁГ±ГЁ
         for j in range(count):
             
-            # Получаем текст записи и id записи
+            # ГЏГ®Г«ГіГ·Г ГҐГ¬ ГІГҐГЄГ±ГІ Г§Г ГЇГЁГ±ГЁ ГЁ id Г§Г ГЇГЁГ±ГЁ
             result_text = result["items"][j]["text"].lower()
             result_id = result["items"][j]["id"]
             
-            # Видоизменяем для вк
+            # Г‚ГЁГ¤Г®ГЁГ§Г¬ГҐГ­ГїГҐГ¬ Г¤Г«Гї ГўГЄ
             right_format_post_id = "wall" + vk_groups[i] + "_" + str(result_id)
             
-            # Проверка на повторение
+            # ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГ®ГўГІГ®Г°ГҐГ­ГЁГҐ
             f1 = open("yetUsed.txt","r+", encoding="utf-8")
             flag = False
             for line in f1:
                 if right_format_post_id == line.strip():
                     flag = True
-                    print(right_format_post_id + " уже репостилось")
+                    print(right_format_post_id + " ГіГ¦ГҐ Г°ГҐГЇГ®Г±ГІГЁГ«Г®Г±Гј")
                     break
             if flag:
                 continue
             
-            # Проверка на присутствие слов из белого списка
+            # ГЏГ°Г®ГўГҐГ°ГЄГ  Г­Г  ГЇГ°ГЁГ±ГіГІГ±ГІГўГЁГҐ Г±Г«Г®Гў ГЁГ§ ГЎГҐГ«Г®ГЈГ® Г±ГЇГЁГ±ГЄГ 
             f2 = open("whiteList.txt", "r+", encoding="utf-8")
             for line in f2:
                 if result_text.find(line.strip()) == -1:
                     flag = True
                 else:
                     flag = False
-                    print("Есть слово " + line)
+                    print("Г…Г±ГІГј Г±Г«Г®ГўГ® " + line)
                     break
             if flag:
                 continue
                     
-            # Если не прошла проверки, переходим к следующей записе
+            # Г…Г±Г«ГЁ Г­ГҐ ГЇГ°Г®ГёГ«Г  ГЇГ°Г®ГўГҐГ°ГЄГЁ, ГЇГҐГ°ГҐГµГ®Г¤ГЁГ¬ ГЄ Г±Г«ГҐГ¤ГіГѕГ№ГҐГ© Г§Г ГЇГЁГ±ГҐ
             f2.close()
             
-            # Если запись прошла проверки на повторение, то добавляем в уже зарепощенные
+            # Г…Г±Г«ГЁ Г§Г ГЇГЁГ±Гј ГЇГ°Г®ГёГ«Г  ГЇГ°Г®ГўГҐГ°ГЄГЁ Г­Г  ГЇГ®ГўГІГ®Г°ГҐГ­ГЁГҐ, ГІГ® Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ Гў ГіГ¦ГҐ Г§Г Г°ГҐГЇГ®Г№ГҐГ­Г­Г»ГҐ
             f1.write(right_format_post_id + "\n")
             f1.close()
             
-            # Ищем спонсорскую группу и подписываемся на нее и делаем репост
+            # Г€Г№ГҐГ¬ Г±ГЇГ®Г­Г±Г®Г°Г±ГЄГіГѕ ГЈГ°ГіГЇГЇГі ГЁ ГЇГ®Г¤ГЇГЁГ±Г»ГўГ ГҐГ¬Г±Гї Г­Г  Г­ГҐГҐ ГЁ Г¤ГҐГ«Г ГҐГ¬ Г°ГҐГЇГ®Г±ГІ
             r = r"\d{9}"
             sponsor_group_id = re.findall(r, result_text)[0]
             
-            #     Вступаем
+            #     Г‚Г±ГІГіГЇГ ГҐГ¬
             try:
                 vk_session.method("groups.join", {"group_id" : sponsor_group_id})
             except:
                 pass
             
-            # Вывод доп инфы
+            # Г‚Г»ГўГ®Г¤ Г¤Г®ГЇ ГЁГ­ГґГ»
             print("=======================================")
             print(result_text + "\n\n")
             print("=======================================")            
             
-            #     Делаем репост
+            #     Г„ГҐГ«Г ГҐГ¬ Г°ГҐГЇГ®Г±ГІ
             vk_session.method("wall.repost", {"object" : right_format_post_id })
             
-            print("Репостнул " + right_format_post_id + "и вступил в группу " + sponsor_group_id + "\n" )
+            print("ГђГҐГЇГ®Г±ГІГ­ГіГ« " + right_format_post_id + "ГЁ ГўГ±ГІГіГЇГЁГ« Гў ГЈГ°ГіГЇГЇГі " + sponsor_group_id + "\n" )
             
-            # Кд для записей
+            # ГЉГ¤ Г¤Г«Гї Г§Г ГЇГЁГ±ГҐГ©
             time.sleep(120.0+random.random()*200.0)
     
-    # Чекать раз в час        
+    # Г—ГҐГЄГ ГІГј Г°Г Г§ Гў Г·Г Г±        
     time.sleep(3600)
