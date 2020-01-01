@@ -1,0 +1,180 @@
+{
+  "sergey.igymn@gmail.com": {
+    "cookies": [
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".login.vk.com",
+        "domain_initial_dot": false,
+        "domain_specified": true,
+        "expires": null,
+        "name": "h",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {
+          "HttpOnly": null
+        },
+        "rfc2109": false,
+        "secure": true,
+        "value": "1",
+        "version": 0
+      },
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".login.vk.com",
+        "domain_initial_dot": false,
+        "domain_specified": true,
+        "expires": null,
+        "name": "l",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {
+          "HttpOnly": null
+        },
+        "rfc2109": false,
+        "secure": true,
+        "value": "347307331",
+        "version": 0
+      },
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".login.vk.com",
+        "domain_initial_dot": false,
+        "domain_specified": true,
+        "expires": null,
+        "name": "p",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {
+          "HttpOnly": null
+        },
+        "rfc2109": false,
+        "secure": true,
+        "value": "e5ebed8aa35f02380305112bd85b36f8bc427dc6cc31f7c4541d8a564140e",
+        "version": 0
+      },
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".login.vk.com",
+        "domain_initial_dot": false,
+        "domain_specified": true,
+        "expires": null,
+        "name": "s",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {
+          "HttpOnly": null
+        },
+        "rfc2109": false,
+        "secure": true,
+        "value": "1",
+        "version": 0
+      },
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".vk.com",
+        "domain_initial_dot": true,
+        "domain_specified": true,
+        "expires": null,
+        "name": "remixlang",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {},
+        "rfc2109": false,
+        "secure": false,
+        "value": "0",
+        "version": 0
+      },
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".vk.com",
+        "domain_initial_dot": true,
+        "domain_specified": true,
+        "expires": null,
+        "name": "remixsid",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {
+          "HttpOnly": null
+        },
+        "rfc2109": false,
+        "secure": true,
+        "value": "b88c631e6b6690ce5c9911d59d79335123fe4ccca195fd0666a684e8452b7",
+        "version": 0
+      },
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".vk.com",
+        "domain_initial_dot": true,
+        "domain_specified": true,
+        "expires": null,
+        "name": "remixstid",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {},
+        "rfc2109": false,
+        "secure": true,
+        "value": "1894138221_954ec67fd507ad1a23",
+        "version": 0
+      },
+      {
+        "comment": null,
+        "comment_url": null,
+        "discard": false,
+        "domain": ".vk.com",
+        "domain_initial_dot": true,
+        "domain_specified": true,
+        "expires": null,
+        "name": "remixusid",
+        "path": "/",
+        "path_specified": true,
+        "port": null,
+        "port_specified": false,
+        "rest": {
+          "HttpOnly": null
+        },
+        "rfc2109": false,
+        "secure": true,
+        "value": "ODAzOGU4YTJlODdhMDU5NDc2OWRlNGY5",
+        "version": 0
+      }
+    ],
+    "token": {
+      "app6222115": {
+        "scope_140492255": {
+          "access_token": "ce79e59323916f2d662267f9682feac0a515ad9461a20fd537f80daf4185f9d13ccd6a548ff735a5ea1e5",
+          "email": "sergey.igymn@gmail.com",
+          "expires_in": "0",
+          "user_id": "347307331"
+        }
+      }
+    }
+  }
+}
