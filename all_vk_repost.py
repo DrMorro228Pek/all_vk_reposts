@@ -1,6 +1,5 @@
 # coding: utf8
 import vk_api
-import data
 import json
 import re
 import random
