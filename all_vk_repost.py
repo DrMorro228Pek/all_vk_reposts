@@ -77,7 +77,12 @@ while True:
             print("=======================================")            
             
             #     Делаем репост
-            vk_session.method("wall.repost", {"object" : right_format_post_id })
+            try:
+                vk_session.method("wall.repost", {"object" : right_format_post_id })
+            except:
+                print("Достигнут лимит записей (>50)")
+                time.sleep(7200)
+                continue
             
             print("Репостнул " + right_format_post_id + "и вступил в группу " + sponsor_group_id + "\n" )
             
