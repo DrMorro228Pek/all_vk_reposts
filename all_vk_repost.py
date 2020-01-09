@@ -63,7 +63,11 @@ while True:
             
             # Ищем спонсорскую группу и подписываемся на нее и делаем репост
             r = r"\d{9}"
-            sponsor_group_id = re.findall(r, result_text)[0]
+            try:
+                sponsor_group_id = re.findall(r, result_text)[0]
+            except:
+                print("Отсутствует спонсораская группа: не конкурс - пропуск.")
+                continue
             
             #     Вступаем
             try:
